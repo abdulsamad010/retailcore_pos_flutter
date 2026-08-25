@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class StockMovementScreen extends StatelessWidget {
-  const StockMovementScreen({super.key});
+class SalesHistoryScreen extends StatelessWidget {
+  const SalesHistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
