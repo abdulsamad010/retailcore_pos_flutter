@@ -39,43 +39,43 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 8,),
             Expanded(
               child: GridView.builder(itemCount: listOptions.length,gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(childAspectRatio: 3,crossAxisCount: 2), itemBuilder: (context,index){
-                return InkWell(
-                  onTap: (){
-                    if(index==0){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductScreen()));
-                    }
-                    else if(index==1){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>StockMovementScreen()));
-                    }
-                    else if(index==2){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CustomerScreen()));
-                    }
-                    else if(index==3){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SupplierScreen()));
-                    }
-                    else if(index==4){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>NewSalesScreen()));
-                    }
-                    else if(index==5){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>StockMovementScreen()));
-                    }
-                    else if(index==6){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SalesHistoryScreen()));
-                    }
-                    else if(index==7){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>DailySalesReportScreen()));
-                    }
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [Colors.greenAccent,Colors.white],begin: AlignmentGeometry.bottomCenter,end: AlignmentGeometry.center),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.blueAccent,width: 1,),
-                    ),
-                    padding: EdgeInsets.all(8),
-                    margin: EdgeInsets.all(8),
-                    child: Center(child: Text("${listOptions[index]}")),
+                return Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [Colors.greenAccent,Colors.white],begin: AlignmentGeometry.bottomCenter,end: AlignmentGeometry.center),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.blueAccent,width: 1,),
                   ),
+                  padding: EdgeInsets.all(8),
+                  margin: EdgeInsets.all(8),
+                  child:GestureDetector(
+                    onTap: (){
+                      if(index==0){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductScreen()));
+                      }
+                      else if(index==1){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>StockMovementScreen()));
+                      }
+                      else if(index==2){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>CustomerScreen()));
+                      }
+                      else if(index==3){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SupplierScreen()));
+                      }
+                      else if(index==4){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>NewSalesScreen()));
+                      }
+                      else if(index==5){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>StockMovementScreen()));
+                      }
+                      else if(index==6){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SalesHistoryScreen()));
+                      }
+                      else if(index==7){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>DailySalesReportScreen()));
+                      }
+                    },
+                    child:  Center(child: Text("${listOptions[index]}")),
+                    ),
                 );
               }),
             )
