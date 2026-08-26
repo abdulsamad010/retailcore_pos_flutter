@@ -24,7 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
     "Suppliers",
     "New Sale (POS)",
     "Sales History",
-    "Daily Sales Reports"];
+    "Daily Sales Reports",
+    "Add Product"];
 
   @override
   Widget build(BuildContext context) {

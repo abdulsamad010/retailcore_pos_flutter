@@ -63,4 +63,19 @@ class DatabaseHelper {
       },
     );
   }
+
+  Future<List<Map<String,dynamic>>> getProductDb() async{
+    await initDb();
+    return await db!.query("PRODUCTS");
+  }
+
+  Future<void> deleteProductDb(int id) async {
+    await initDb();
+
+    await db!.delete(
+      "PRODUCTS",
+      where: "ID = ?",
+      whereArgs: [id],
+    );
+  }
 }
