@@ -69,11 +69,36 @@ class DatabaseHelper {
     return await db!.query("PRODUCTS");
   }
 
+  Future<List<Map<String,dynamic>>> getCustomersDb() async{
+    await initDb();
+    return await db!.query("CUSTOMERS");
+  }
+
+  Future<void> addProductDb(String n,int q,int p,String b) async{
+    await initDb();
+    await db!.insert("PRODUCTS", {
+      "NAME":n,
+      "QUANTITY":q,
+      "PRICE":p,
+      "BARCODE":b,
+    });
+  }
+
   Future<void> deleteProductDb(int id) async {
     await initDb();
 
     await db!.delete(
       "PRODUCTS",
+      where: "ID = ?",
+      whereArgs: [id],
+    );
+  }
+
+  Future<void> deleteCustomerDb(int id) async {
+    await initDb();
+
+    await db!.delete(
+      "CUSTOMERS",
       where: "ID = ?",
       whereArgs: [id],
     );
