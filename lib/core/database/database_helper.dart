@@ -69,12 +69,22 @@ class DatabaseHelper {
     return await db!.query("PRODUCTS");
   }
 
+  Future<List<Map<String,dynamic>>> getStockMovementsDb() async{
+    await initDb();
+    return await db!.query("STOCK_MOVEMENTS");
+  }
+
   Future<List<Map<String,dynamic>>> getCustomersDb() async{
     await initDb();
     return await db!.query("CUSTOMERS");
   }
 
-  Future<void> addProductDb(String n,int q,int p,String b) async{
+  Future<List<Map<String,dynamic>>> getSuppliersDb() async{
+    await initDb();
+    return await db!.query("SUPPLIERS");
+  }
+
+  Future<int> addProductDb(String n,int q,int p,String b) async{
     await initDb();
     await db!.insert("PRODUCTS", {
       "NAME":n,
@@ -82,6 +92,32 @@ class DatabaseHelper {
       "PRICE":p,
       "BARCODE":b,
     });
+
+    List<Map<String, Object?>> id= await db!.query("PRODUCTS",columns: ["ID"],orderBy: "ID DESC",limit: 1,);
+    return id[0]["ID"] as int;
+  }
+
+  Future<void> addStockMovementSupplierDb(int pId,int sId,int q,int p) async {
+    final type="Stock In";
+    final date=DateTime.now().toString();
+    await initDb();
+    await db!.insert("STOCK_MOVEMENTS", {
+      "PRODUCT_ID": pId,
+      "SUPPLIER_ID": sId,
+      "QUANTITY": q,
+      "PRICE": p,
+      "TYPE": type,
+      "DATE": date,
+    });
+  }
+
+  Future<int> addSupplierDb(String n2,String p2) async{
+    await initDb();
+    final id=await db!.insert("SUPPLIERS", {
+      "NAME":n2,
+      "PHONE":p2,
+    });
+    return id;
   }
 
   Future<void> deleteProductDb(int id) async {
@@ -89,6 +125,26 @@ class DatabaseHelper {
 
     await db!.delete(
       "PRODUCTS",
+      where: "ID = ?",
+      whereArgs: [id],
+    );
+  }
+
+  Future<void> deleteStockMovementDb(int id) async {
+    await initDb();
+
+    await db!.delete(
+      "STOCK_MOVEMENTS",
+      where: "ID = ?",
+      whereArgs: [id],
+    );
+  }
+
+  Future<void> deleteSupplierDb(int id) async {
+    await initDb();
+
+    await db!.delete(
+      "SUPPLIERS",
       where: "ID = ?",
       whereArgs: [id],
     );
