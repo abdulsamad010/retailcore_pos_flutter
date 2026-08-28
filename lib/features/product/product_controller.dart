@@ -18,6 +18,7 @@ class ProductController extends GetxController{
 
   Future<void> deleteProduct(int id) async{
     await obj.deleteProductDb(id);
+    showProducts();
   }
 }
 
