@@ -1,13 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:retailcore_pos/features/add_product/add_product_screen.dart';
+import 'package:retailcore_pos/features/customer/customer_controller.dart';
 import 'package:retailcore_pos/features/customer/customer_screen.dart';
+import 'package:retailcore_pos/features/new_sales/new_sales_controller.dart';
 
 import '../../core/widgets/custom_app_bar.dart';
 import '../daily_sales_report/daily_sales_report_screen.dart';
 import '../new_sales/new_sales_screen.dart';
+import '../product/product_controller.dart';
 import '../product/product_screen.dart';
 import '../sales_history/sales_history_screen.dart';
+import '../stock_movement/stock_movement_controller.dart';
 import '../stock_movement/stock_movement_screen.dart';
+import '../supplier/supplier_controller.dart';
 import '../supplier/supplier_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -51,28 +59,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   child:GestureDetector(
                     onTap: (){
                       if(index==0){
+                        Get.delete<ProductController>();
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductScreen()));
                       }
                       else if(index==1){
+                        Get.delete<StockMovementController>();
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>StockMovementScreen()));
                       }
                       else if(index==2){
+                        Get.delete<CustomerController>();
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>CustomerScreen()));
                       }
                       else if(index==3){
+                        Get.delete<SupplierController>();
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>SupplierScreen()));
                       }
                       else if(index==4){
+                        Get.delete<NewSalesController>();
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>NewSalesScreen()));
                       }
                       else if(index==5){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>StockMovementScreen()));
-                      }
-                      else if(index==6){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>SalesHistoryScreen()));
                       }
-                      else if(index==7){
+                      else if(index==6){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>DailySalesReportScreen()));
+                      }
+                      else if(index==7){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>AddProductScreen()));
                       }
                     },
                     child:  Center(child: Text("${listOptions[index]}")),
