@@ -18,6 +18,7 @@ class CustomerController extends GetxController{
 
   Future<void> deleteCustomer(int id) async{
     await obj.deleteCustomerDb(id);
+    showCustomers();
   }
 }
 
