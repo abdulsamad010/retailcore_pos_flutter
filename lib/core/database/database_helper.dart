@@ -51,10 +51,10 @@ class DatabaseHelper {
         await db.execute('''
   CREATE TABLE STOCK_MOVEMENTS(
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    PRODUCT_ID INTEGER NOT NULL,
+    PRODUCT_ID INTEGER,
     SUPPLIER_ID INTEGER,
     CUSTOMER_ID INTEGER,
-    QUANTITY INTEGER NOT NULL,
+    QUANTITY INTEGER,
     PRICE INTEGER NOT NULL,
     TYPE TEXT NOT NULL,
     DATE TEXT NOT NULL
@@ -97,6 +97,8 @@ class DatabaseHelper {
     return id[0]["ID"] as int;
   }
 
+
+
   Future<void> addStockMovementSupplierDb(int pId,int sId,int q,int p) async {
     final type="Stock In";
     final date=DateTime.now().toString();
@@ -111,9 +113,46 @@ class DatabaseHelper {
     });
   }
 
+  Future<void> addSalesDb(int cId,int p) async {
+    final date=DateTime.now().toString();
+    await initDb();
+    await db!.insert("SALES", {
+      "CUSTOMER_ID": cId,
+      "TOTAL_AMOUNT": p,
+      "DATE": date,
+    });
+  }
+
+  Future<List<Map<String,dynamic>>> showSalesDb() async {
+    await initDb();
+    return await db!.query("SALES");
+  }
+
+  Future<void> addStockMovementCustomerDb(cId,int p) async {
+    final type="Stock Out";
+    final date=DateTime.now().toString();
+    await initDb();
+    await db!.insert("STOCK_MOVEMENTS", {
+      "CUSTOMER_ID": cId,
+      "PRICE": p,
+      "TYPE": type,
+      "DATE": date,
+    });
+  }
+
+
   Future<int> addSupplierDb(String n2,String p2) async{
     await initDb();
     final id=await db!.insert("SUPPLIERS", {
+      "NAME":n2,
+      "PHONE":p2,
+    });
+    return id;
+  }
+
+  Future<int> addCustomerDb(String n2,String p2) async{
+    await initDb();
+    final id=await db!.insert("CUSTOMERS", {
       "NAME":n2,
       "PHONE":p2,
     });
