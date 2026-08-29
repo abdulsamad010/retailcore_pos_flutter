@@ -15,7 +15,7 @@ class CustomerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(name: "VIEW PRODUCTS"),
+        appBar: CustomAppBar(name: "VIEW CUSTOMERS"),
 
         body: Obx(()=> pC.customers.isNotEmpty ? ListView.builder(itemCount: pC.customers.length,itemBuilder:(context,index){
           return Container(
@@ -41,9 +41,7 @@ class CustomerScreen extends StatelessWidget {
                       children: [
                         Text("Id: ${pC.customers[index]["ID"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,),),
                         Text("Name: ${pC.customers[index]["NAME"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                        Text("Quantity: ${pC.customers[index]["QUANTITY"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                        Text("Price: ${pC.customers[index]["PRICE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                        Text("Barcode: ${pC.customers[index]["BARCODE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
+                        Text("Phone Number: ${pC.customers[index]["PHONE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
                       ],
                     ),
                   ),
@@ -61,12 +59,11 @@ class CustomerScreen extends StatelessWidget {
                         child: Text("Delete Customer",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,)),
                       ),
                     )),
-
               ],
 
             ),
           );
         })
-            : Text("No Customer Found",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,))));
+            : Text("No Customer Added",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,))));
   }
 }
