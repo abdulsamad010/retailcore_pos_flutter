@@ -23,6 +23,7 @@ class NewSalesScreen extends StatelessWidget {
           child: SizedBox(
             width: double.infinity,
             child: FloatingActionButton.extended(onPressed: (){
+              pC.showTotal();
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CartScreen()));
             },
               backgroundColor: Colors.greenAccent,
