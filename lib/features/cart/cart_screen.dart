@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:retailcore_pos/features/invoice/invoice_screen.dart';
 
 import '../../core/widgets/custom_app_bar.dart';
+import '../add_customer/add_customer_screen.dart';
 import '../new_sales/new_sales_controller.dart';
 
 class CartScreen extends StatelessWidget {
@@ -22,15 +24,14 @@ class CartScreen extends StatelessWidget {
           child: SizedBox(
             width: double.infinity,
             child: FloatingActionButton.extended(onPressed: (){
-              //Navigator.push(context, MaterialPageRoute(builder: (context)=>CartScreen(productsQuantity:pC.productsQuantity)));
+              pC.showTotal();
+              if(pC.productsQuantity.isNotEmpty) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddCustomerScreen()));
+              }
             },
               backgroundColor: Colors.greenAccent,
-              label: Row(
-                children: [
-                  Text("View Cart",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,)),
-                  SizedBox(width: 8,),
-                  Icon(Icons.trolley,color: Colors.white,)
-                ],
+              label: Obx(()=>Text("Checkout with Total\n Rs: ${pC.total}",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,)),
               ),),
           ),
         ),
@@ -82,8 +83,7 @@ class CartScreen extends StatelessWidget {
 
                         pC.productsQuantity.refresh();
                         pC.screenQuantityDisplay.refresh();
-
-
+                        pC.showTotal();
                     },
                         style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,padding: EdgeInsets.all(4))
                         ,child: Padding(
@@ -97,16 +97,18 @@ class CartScreen extends StatelessWidget {
                     ElevatedButton(onPressed: (){
 
                         if(pC.productsQuantity[index]["QUANTITY"]==1){
-                          pC.productsQuantity.removeAt(index);
                           pC.screenQuantityDisplay[pC.productsQuantity[index]["INDEX"]]--;
+                          pC.productsQuantity.removeAt(index);
                           pC.productsQuantity.refresh();
                           pC.screenQuantityDisplay.refresh();
+                          pC.showTotal();
                         }
                         else{
                           pC.productsQuantity[index]["QUANTITY"]--;
                           pC.screenQuantityDisplay[pC.productsQuantity[index]["INDEX"]]--;
                           pC.productsQuantity.refresh();
                           pC.screenQuantityDisplay.refresh();
+                          pC.showTotal();
                         }
                     },
                         style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,padding: EdgeInsets.all(4))
