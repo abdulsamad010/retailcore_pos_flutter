@@ -6,8 +6,10 @@ import 'package:retailcore_pos/features/add_product/add_product_screen.dart';
 import 'package:retailcore_pos/features/customer/customer_controller.dart';
 import 'package:retailcore_pos/features/customer/customer_screen.dart';
 import 'package:retailcore_pos/features/new_sales/new_sales_controller.dart';
+import 'package:retailcore_pos/features/sales_history/sales_history_controller.dart';
 
 import '../../core/widgets/custom_app_bar.dart';
+import '../daily_sales_report/daily_sales_report_controller.dart';
 import '../daily_sales_report/daily_sales_report_screen.dart';
 import '../new_sales/new_sales_screen.dart';
 import '../product/product_controller.dart';
@@ -79,9 +81,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>NewSalesScreen()));
                       }
                       else if(index==5){
+                        Get.delete<SalesHistoryController>();
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>SalesHistoryScreen()));
                       }
                       else if(index==6){
+                        Get.delete<DailySalesReportController>();
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>DailySalesReportScreen()));
                       }
                       else if(index==7){
