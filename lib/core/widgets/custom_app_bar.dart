@@ -10,10 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(leading:IconButton(
-    icon: Icon(Icons.arrow_circle_left,color: Colors.white,),
-    onPressed: () => Navigator.pop(context),
-    ),
+    return AppBar(iconTheme: IconThemeData(color: Colors.white),
       title: Center(child: Text(name,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
       backgroundColor: Colors.blueAccent,
       shape: RoundedRectangleBorder(
