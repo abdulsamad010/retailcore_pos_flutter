@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:retailcore_pos/features/add_product/add_product_screen.dart';
@@ -37,6 +38,28 @@ class _HomeScreenState extends State<HomeScreen> {
     "Daily Sales Reports",
     "Add Product"];
 
+  final icon=[
+    Icons.production_quantity_limits_sharp,
+    Icons.shopping_cart_sharp,
+    Icons.loop,
+    Icons.people,
+    Icons.next_week,
+    Icons.shopping_cart_sharp,
+    Icons.newspaper,
+    Icons.add,
+  ];
+
+  final iconColor=[
+    Colors.green,
+    Colors.blueAccent,
+    Colors.lightBlueAccent,
+    Colors.redAccent,
+    Colors.orange,
+    Colors.blueAccent,
+    Colors.amberAccent,
+    Colors.deepPurple,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +69,41 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
+
+            Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: Colors.blueAccent,
+                boxShadow: [
+                  BoxShadow(color: Colors.blueAccent,
+                  blurRadius: 1,
+                  spreadRadius: 1,
+                  blurStyle: BlurStyle.solid)
+                ],
+              ),
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text("Manage your business smarter, faster, and effortlessly",style: TextStyle(
+                      color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15
+                    ),),
+                  ),
+
+                  Icon(Icons.shopify_rounded,color: Colors.white,)
+
+                ],
+              ),
+            ),
+
+            SizedBox(height: 14,),
+
             Center(child: Container(decoration: BoxDecoration(border: Border.all(color: Colors.blueAccent,width: 1),borderRadius: BorderRadius.circular(5)),padding: EdgeInsets.all(8),child: Text("Offline Inventory & Point-of-Sale System",style: TextStyle(color: Colors.greenAccent,fontWeight: FontWeight.bold,fontSize: 20),))),
             SizedBox(height: 8,),
             Expanded(
-              child: GridView.builder(itemCount: listOptions.length,gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(childAspectRatio: 3,crossAxisCount: 2), itemBuilder: (context,index){
+              child: GridView.builder(itemCount: listOptions.length,gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(childAspectRatio: 1,crossAxisCount: 3), itemBuilder: (context,index){
                 return Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [Colors.greenAccent,Colors.white],begin: AlignmentGeometry.bottomCenter,end: AlignmentGeometry.center),
@@ -92,7 +146,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>AddProductScreen()));
                       }
                     },
-                    child:  Center(child: Text("${listOptions[index]}")),
+                    child:  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(icon[index],color: iconColor[index],size: MediaQuery.sizeOf(context).width*0.08),
+                        Center(child: Text("${listOptions[index]}")),
+                      ],
+                    ),
                     ),
                 );
               }),
