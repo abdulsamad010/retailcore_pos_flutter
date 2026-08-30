@@ -19,30 +19,46 @@ class DailySalesReportScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back,color: Colors.black,)),
-                Expanded(child: Center(child: Text("Daily Sales History",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black,)))),
+                Text("Back",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,)),
               ],
             ),
-            Divider(),
+
+            Container(
+              margin: EdgeInsets.all(8),
+            decoration: BoxDecoration(color: Colors.white,border: Border.all(color: Colors.black)),
+                child:Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+            Container(color: Colors.blueAccent,child: Center(child: Text("Daily Sales History",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white,)))),
 
             Flexible(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("Id",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,)),
-                  Text("Custome Id",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,)),
-                  Text("Price",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,)),
-                  Text("Date",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,)),
-                ],
+              child: Container(
+                height: 25,
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                color: Colors.black12,
+    ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text("Id",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
+                    VerticalDivider(color: Colors.black,thickness: 1,),
+                    Text("Custome Id",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
+                    VerticalDivider(color: Colors.black,thickness: 1,),
+                    Text("Price",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
+                    VerticalDivider(color: Colors.black,thickness: 1,),
+                    Text("Date",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
+                  ],
+                ),
               ),
             ),
 
-            Divider(),
 
             Obx(()=> pC.sales.isNotEmpty ? Expanded(
               child: ListView.builder(itemCount: pC.sales.length,itemBuilder:(context,index){
@@ -67,12 +83,11 @@ class DailySalesReportScreen extends StatelessWidget {
                 );
               }),
             )
-                : Text("No Sales Added",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,))),
+                : Center(child: Text("No Sales Added",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 10)))),
 
-            Divider(),
-            Container(decoration: BoxDecoration(color: Colors.blueAccent,borderRadius: BorderRadius.circular(5)),width: double.infinity,padding: EdgeInsets.all(8),margin: EdgeInsets.all(8),child: Center(child:  Obx(()=>Text("Total Sales Today: ${pC.total}",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black,))))),
-            Divider(),
-
+            Divider(color: Colors.black,),
+            Container(decoration: BoxDecoration(color: Colors.greenAccent,borderRadius: BorderRadius.circular(5)),width: double.infinity,padding: EdgeInsets.all(8),margin: EdgeInsets.all(8),child: Center(child:  Obx(()=>Text("Total Sales Today: ${pC.total}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black,))))),
+    ]))
           ],
         ),
       ),

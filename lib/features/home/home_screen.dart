@@ -86,19 +86,11 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
                       Center(
                         child: Text("Manage your business smarter, faster, and effortlessly",style: TextStyle(
                           color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15
                         ),),
                       ),
-
-                      Icon(Icons.shopify_rounded,color: Colors.white,)
-
-                    ],
-                  ),
 
 
                     Row(

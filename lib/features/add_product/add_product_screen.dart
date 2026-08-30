@@ -17,6 +17,15 @@ class AddProductScreen extends StatelessWidget {
   final n2C=TextEditingController();
   final p2C=TextEditingController();
 
+  final iconColor=[
+    Colors.green,
+    Colors.blueAccent,
+    Colors.purpleAccent,
+    Colors.redAccent,
+    Colors.orange,
+    Colors.blueAccent,
+  ];
+
   final formKey=GlobalKey<FormState>();
 
   String? nV(String? v) {
@@ -74,100 +83,107 @@ class AddProductScreen extends StatelessWidget {
       appBar: CustomAppBar(name: "Add Product"),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(8.0,16,8,8),
           child: Form(
             key: formKey,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
-                  TextFormField(
-                    decoration: InputDecoration(
-                      label: Text("Enter Product Name"),
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.person,color: Colors.blueAccent,),
-                    ),
-                    controller: nC,
-                    validator: nV,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                Text("Product Details",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),),
+                SizedBox(height: 8,),
+
+                TextFormField(
+                  decoration: InputDecoration(
+                    label: Text("Enter Product Name"),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.person,color: iconColor[0],),
                   ),
+                  controller: nC,
+                  validator: nV,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
 
-                  SizedBox(height: 8,),
+                SizedBox(height: 8,),
 
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      label: Text("Enter Product Quantity"),
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.production_quantity_limits_outlined,color: Colors.blueAccent,),
-                    ),
-                    controller: qC,
-                    validator: qV,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    label: Text("Enter Product Quantity"),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.production_quantity_limits_outlined,color: iconColor[1],),
                   ),
+                  controller: qC,
+                  validator: qV,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
 
-                  SizedBox(height: 8,),
+                SizedBox(height: 8,),
 
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      label: Text("Enter Product Price"),
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.money,color: Colors.blueAccent,),
-                    ),
-                    controller: pC,
-                    validator: qV,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    label: Text("Enter Product Price"),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.money,color: iconColor[2],),
                   ),
+                  controller: pC,
+                  validator: qV,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
 
-                  SizedBox(height: 8,),
+                SizedBox(height: 8,),
 
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      label: Text("Enter Product Barcode"),
-                      hintText: "e.g. 8901234567890",
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.barcode_reader,color: Colors.blueAccent,),
-                    ),
-                    controller: bC,
-                    validator: bV,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    label: Text("Enter Product Barcode"),
+                    hintText: "e.g. 8901234567890",
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.barcode_reader,color: iconColor[3],),
                   ),
+                  controller: bC,
+                  validator: bV,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
 
 
-                  SizedBox(height: 8,),
+                SizedBox(height: 8,),
 
-                  TextFormField(
-                    decoration: InputDecoration(
-                      label: Text("Enter Supplier Name"),
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.person_pin,color: Colors.blueAccent,),
-                    ),
-                    controller: n2C,
-                    validator: n2V,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                Text("Supplier Details",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),),
+                SizedBox(height: 8,),
+
+                TextFormField(
+                  decoration: InputDecoration(
+                    label: Text("Enter Supplier Name"),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.person_pin,color: iconColor[4],),
                   ),
+                  controller: n2C,
+                  validator: n2V,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
 
-                  SizedBox(height: 8,),
+                SizedBox(height: 8,),
 
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      label: Text("Enter Supplier Phone Number"),
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.phone,color: Colors.blueAccent,),
-                    ),
-                    controller: p2C,
-                    validator: p2V,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    label: Text("Enter Supplier Phone Number"),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.phone,color: iconColor[5],),
                   ),
+                  controller: p2C,
+                  validator: p2V,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
 
 
-                  SizedBox(height: 8,),
+                SizedBox(height: 16,),
 
-                  ElevatedButton(onPressed: ()async{
+                Center(
+                  child: ElevatedButton(onPressed: ()async{
                     if(formKey.currentState!.validate()){await aPC.addProduct(nC.text,int.tryParse(qC.text) ?? 1,int.tryParse(pC.text) ?? 1,bC.text,n2C.text,p2C.text);}
                   },
                       style: ElevatedButton.styleFrom(backgroundColor: Colors.greenAccent,padding: EdgeInsets.all(4))
@@ -175,10 +191,10 @@ class AddProductScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text("Add Product",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,)),
                       )),
+                ),
 
 
-                ],
-              ),
+              ],
             ),
           ),
         ),
