@@ -83,16 +83,38 @@ class AddCustomerScreen extends StatelessWidget {
 
                 Center(
                   child: ElevatedButton(onPressed: ()async{
-                    if(formKey.currentState!.validate()){await aPC.addCustomer(nC.text,p2C.text);
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => InvoiceScreen()));
+
+                    if(formKey.currentState!.validate()){
+                    showDialog(context: context, builder: (context){
+                      return AlertDialog(
+                        title: Text("Are you sure Bill is Paid?"),
+                        actionsAlignment: MainAxisAlignment.spaceBetween,
+                        actions: [
+
+                          ElevatedButton(
+                              style:ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)
+                              ,onPressed: ()async{
+                            Navigator.pop(context);
+                          }, child: Text("No",style: TextStyle(color: Colors.white),)),
+
+                          ElevatedButton(
+                              style:ElevatedButton.styleFrom(backgroundColor: Colors.redAccent)
+                              ,onPressed: ()async{
+                            await aPC.addCustomer(nC.text,p2C.text);
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) => InvoiceScreen()));
+                          }, child: Text("Yes",style: TextStyle(color: Colors.white),)),
+
+                        ],
+                      );
+                    });
 
                     }
                   },
                       style: ElevatedButton.styleFrom(backgroundColor: Colors.greenAccent,padding: EdgeInsets.all(4))
                       ,child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("Add Customer and View Invoice",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,)),
+                        child: Text("Pay Bill and View Invoice",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,)),
                       )),
                 ),
 
