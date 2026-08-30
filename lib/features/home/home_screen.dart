@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final icon=[
     Icons.production_quantity_limits_sharp,
-    Icons.shopping_cart_sharp,
+    Icons.history,
     Icons.loop,
     Icons.people,
     Icons.next_week,
@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final iconColor=[
     Colors.green,
     Colors.blueAccent,
-    Colors.lightBlueAccent,
+    Colors.purpleAccent,
     Colors.redAccent,
     Colors.orange,
     Colors.blueAccent,
@@ -83,18 +83,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               width: double.infinity,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Text("Manage your business smarter, faster, and effortlessly",style: TextStyle(
-                      color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15
-                    ),),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Text("Manage your business smarter, faster, and effortlessly",style: TextStyle(
+                          color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15
+                        ),),
+                      ),
+
+                      Icon(Icons.shopify_rounded,color: Colors.white,)
+
+                    ],
                   ),
 
-                  Icon(Icons.shopify_rounded,color: Colors.white,)
 
-                ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ElevatedButton(onPressed: (){
+                          Get.delete<DailySalesReportController>();
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>DailySalesReportScreen()));
+                        },
+                            style: ElevatedButton.styleFrom(backgroundColor: Colors.lightBlueAccent)
+                        ,child: Text("Recent Transactions",style: TextStyle(color: Colors.white),)),
+
+                        Image.asset("assets/icon/icon9.png",fit: BoxFit.contain,height: MediaQuery.sizeOf(context).height*0.1,)
+                      ],
+                    ),
+                  
+                     ],
               ),
             ),
 
