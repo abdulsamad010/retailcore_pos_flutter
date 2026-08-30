@@ -35,7 +35,7 @@ class DailySalesReportScreen extends StatelessWidget {
                 child:Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-            Container(color: Colors.blueAccent,child: Center(child: Text("Daily Sales History",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white,)))),
+            Container(color: Colors.blueAccent,child: Center(child: Text("Daily Sales Report",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white,)))),
 
             Flexible(
               child: Container(
