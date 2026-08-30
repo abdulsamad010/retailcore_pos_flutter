@@ -11,66 +11,186 @@ class StockMovementScreen extends StatelessWidget {
 
   StockMovementController pC=Get.put(StockMovementController());
 
+  final iconColor=[
+    Colors.orange,
+    Colors.red,
+    Colors.blueAccent,
+    Colors.purpleAccent,
+    Colors.redAccent,
+    Colors.blueAccent,
+  ];
 
+  int i=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(name: "VIEW Stock Movements"),
+        appBar: CustomAppBar(name: "Stock Movements"),
 
-        body: Obx(()=> pC.products.isNotEmpty ? ListView.builder(itemCount: pC.products.length,itemBuilder:(context,index){
-          return Container(
-            padding: EdgeInsets.all(8),
-            margin: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(5),
-                border: Border.all(color: Colors.blueAccent,width: 1)
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(8),
-                    margin: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.greenAccent,width: 1)
-                    ),
-                    child: Column(
-                      children: [
-                        Text("Id: ${pC.products[index]["ID"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,),),
-                        Text("Product Id: ${pC.products[index]["PRODUCT_ID"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
+        body: Obx(()=> pC.products.isNotEmpty ? Expanded(
+          child: ListView.builder(itemCount: pC.products.length,itemBuilder:(context,index){
 
-                        pC.products[index]["SUPPLIER_ID"]==null ?
-                            Text("Customer Id: ${pC.products[index]["CUSTOMER_ID"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,))
-                        : Text("Supplier Id: ${pC.products[index]["SUPPLIER_ID"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                        Text("Quantity: ${pC.products[index]["QUANTITY"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                        Text("Price: ${pC.products[index]["PRICE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                        Text("Type: ${pC.products[index]["TYPE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                        Text("Date: ${pC.products[index]["DATE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                      ],
+            if(i<5)
+            {
+              i++;
+            }
+            else{
+              i=0;
+            };
+            return Container(
+              padding: EdgeInsets.all(8),
+              margin: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(color: Colors.blueAccent,spreadRadius: 1,blurRadius: 1)
+                  ],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(color: Colors.blueAccent,width: 1)
+              ),
+              child: Row(
+                children: [
+
+                  Column(
+                    children: [
+                      Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: [Colors.greenAccent,Colors.blueAccent],begin: Alignment.bottomCenter,end: Alignment.topCenter),
+                              border: Border.all(color: Colors.blueAccent),
+                              borderRadius: BorderRadius.circular(25)
+                          )
+                          ,child: Icon(Icons.local_shipping_outlined,color: iconColor[i],)),
+
+                      Text("#0${index+1}",style: TextStyle(fontWeight: FontWeight.bold),)
+                    ],
+                  ),
+
+
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.greenAccent,
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(color: Colors.black,width: 1)
+                            ),
+                            height: 20,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text("Id",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+                                VerticalDivider(),
+
+                                pC.products[index]["SUPPLIER_ID"]==null ?
+                                Text("Customer Id",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),)
+                                : Text("Supplier Id",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+
+                                VerticalDivider(),
+
+                                Text("Type",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+
+                              ],
+                            ),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("${pC.products[index]["ID"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,),),
+
+                                pC.products[index]["SUPPLIER_ID"]==null ?
+                                Text("${pC.products[index]["CUSTOMER_ID"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,))
+                                    : Text("${pC.products[index]["SUPPLIER_ID"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
+
+                                Text("${pC.products[index]["TYPE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
+
+                              ],
+                            ),
+                          ),
+
+                          Divider(color: Colors.blueAccent,),
+
+                          SizedBox(height: 8,),
+
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.greenAccent,
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(color: Colors.black,width: 1)
+                            ),
+                            height: 20,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text("Price",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+
+                                VerticalDivider(),
+
+                                Text("Date",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+                              ],
+                            ),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text("${pC.products[index]["PRICE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
+                                Text("${pC.products[index]["DATE"].substring(0,10)}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
+                              ],
+                            ),
+                          ),],
+                      ),
                     ),
                   ),
-                ),
 
-                ElevatedButton(onPressed: ()async{
-                  await pC.deleteStockMovement(pC.products[index]["ID"]);
-                  await pC.showStockMovements();
-                },
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,padding: EdgeInsets.all(4))
-                    ,child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("Delete",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,)),
-                      ),
-                    )),
-              ],
+                  IconButton(onPressed: ()async{
+                    showDialog(context: context, builder: (context){
+                      return AlertDialog(
+                        title: Text("Are you sure to Delete?"),
+                        actionsAlignment: MainAxisAlignment.spaceBetween,
+                        actions: [
 
-            ),
-          );
-        })
-            : Text("No Stock Movements Added",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,))));
+                          ElevatedButton(
+                              style:ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)
+                              ,onPressed: ()async{
+                            Navigator.pop(context);
+                          }, child: Text("No",style: TextStyle(color: Colors.white),)),
+
+                          ElevatedButton(
+                              style:ElevatedButton.styleFrom(backgroundColor: Colors.redAccent)
+                              ,onPressed: ()async{
+                            await pC.deleteStockMovement(pC.products[index]["ID"]);
+                            await pC.showStockMovements();
+                            Navigator.pop(context);
+                          }, child: Text("Yes",style: TextStyle(color: Colors.white),)),
+
+                        ],
+                      );
+                    });
+                  }, icon: Icon(Icons.delete,color: Colors.redAccent,))
+                ],
+
+              ),
+            );
+
+          }),
+        )
+            : Center(child: Text("No Stock Movement Added",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,)))));
   }
 }
+
+
+
+
+
+
+
+

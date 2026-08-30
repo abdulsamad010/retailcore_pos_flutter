@@ -27,6 +27,13 @@ class ProductScreen extends StatelessWidget {
 
       body: Obx(()=> pC.products.isNotEmpty ? Expanded(
         child: ListView.builder(itemCount: pC.products.length,itemBuilder:(context,index){
+          if(i<5)
+          {
+            i++;
+          }
+          else{
+            i=0;
+          };
           return Container(
             padding: EdgeInsets.all(8),
             margin: EdgeInsets.all(8),
@@ -164,7 +171,6 @@ class ProductScreen extends StatelessWidget {
 
             ),
           );
-          i++;
         }),
       )
       : Center(child: Text("No Product Added",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,)))));
