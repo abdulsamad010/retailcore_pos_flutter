@@ -57,7 +57,7 @@ class SupplierScreen extends StatelessWidget {
                             border: Border.all(color: Colors.blueAccent),
                             borderRadius: BorderRadius.circular(25)
                         )
-                        ,child: Icon(Icons.shopping_bag,color: iconColor[i],)),
+                        ,child: Icon(Icons.person,color: iconColor[i],)),
 
                     Text("#0${index+1}",style: TextStyle(fontWeight: FontWeight.bold),)
                   ],
