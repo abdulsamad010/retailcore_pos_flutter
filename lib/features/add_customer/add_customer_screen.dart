@@ -12,6 +12,7 @@ class AddCustomerScreen extends StatelessWidget {
 
   AddCustomerController aPC=Get.put(AddCustomerController());
 
+
   final nC=TextEditingController();
   final p2C=TextEditingController();
 
@@ -36,21 +37,27 @@ class AddCustomerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(name: "Add Customer First"),
+      appBar: CustomAppBar(name: "Add Customer"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Form(
             key: formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
+                SizedBox(height: 16,),
+
+                Text("Please Add Customer Details First",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),),
+                SizedBox(height: 8,),
 
                 TextFormField(
                   decoration: InputDecoration(
                     label: Text("Enter Customer Name"),
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.person,color: Colors.blueAccent,),
+                    prefixIcon: Icon(Icons.person,color: Colors.redAccent,),
                   ),
                   controller: nC,
                   validator: nV,
@@ -60,10 +67,11 @@ class AddCustomerScreen extends StatelessWidget {
                 SizedBox(height: 8,),
 
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     label: Text("Enter Customer Phone Number"),
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.phone,color: Colors.blueAccent,),
+                    prefixIcon: Icon(Icons.phone,color: Colors.purpleAccent,),
                   ),
                   controller: p2C,
                   validator: p2V,
@@ -71,20 +79,22 @@ class AddCustomerScreen extends StatelessWidget {
                 ),
 
 
-                SizedBox(height: 8,),
+                SizedBox(height: 16,),
 
-                ElevatedButton(onPressed: ()async{
-                  if(formKey.currentState!.validate()){await aPC.addCustomer(nC.text,p2C.text);
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => InvoiceScreen()));
+                Center(
+                  child: ElevatedButton(onPressed: ()async{
+                    if(formKey.currentState!.validate()){await aPC.addCustomer(nC.text,p2C.text);
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => InvoiceScreen()));
 
-                  }
-                },
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent,padding: EdgeInsets.all(4))
-                    ,child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Add Customer and View Invoice",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,)),
-                    )),
+                    }
+                  },
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.greenAccent,padding: EdgeInsets.all(4))
+                      ,child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("Add Customer and View Invoice",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,)),
+                      )),
+                ),
 
 
               ],

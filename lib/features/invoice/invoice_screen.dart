@@ -13,78 +13,132 @@ class InvoiceScreen extends StatelessWidget {
 
 
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
-          floatingActionButton: Padding(
-            padding: const EdgeInsets.fromLTRB(33,0,0,0),
-            child: SizedBox(
-              width: double.infinity,
-              child: FloatingActionButton.extended(onPressed: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen(),));
-                },
-                backgroundColor: Colors.greenAccent,
-                label: Text("GoTo Home",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,),
-                ),),
-            ),
-          ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.fromLTRB(33,0,0,0),
+        child: SizedBox(
+          width: double.infinity,
+          child: FloatingActionButton.extended(onPressed: (){
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen(),));
+          },
+            backgroundColor: Colors.greenAccent,
+            label: Text("GoTo Home",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,),
+            ),),
+        ),
+      ),
 
-          body: SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+      body: SafeArea(
+        child: Container(
+            margin: EdgeInsets.fromLTRB(8,16,8,80),
+            decoration: BoxDecoration(color: Colors.white,border: Border.all(color: Colors.black)),
+            child:Column(
+                children: [
+                  Container(color: Colors.blueAccent,child: Center(child: Text("Invoice",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white,)))),
 
-                Center(child: Text("Invoice",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black,))),
-
-                Divider(),
-
-                Flexible(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text("Item",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,)),
-                      Text("Quantity",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,)),
-                      Text("Price/Item",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,)),
-                      Text("Barcode",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,)),
-                    ],
+                  Container(
+                    height: 25,
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      color: Colors.black12,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Item",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
+                        VerticalDivider(color: Colors.black,thickness: 1,),
+                        Text("Quantity",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
+                        VerticalDivider(color: Colors.black,thickness: 1,),
+                        Text("Price/Item",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
+                        VerticalDivider(color: Colors.black,thickness: 1,),
+                        Text("Barcode",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
+                      ],
+                    ),
                   ),
-                ),
 
-                Divider(),
 
-                Obx(()=> pC.products.isNotEmpty ? Expanded(
-                  child: ListView.builder(itemCount: pC.productsQuantity.length,itemBuilder:(context,index){
-                              return Container(
-                  padding: EdgeInsets.all(8),
-                  margin: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: Colors.blueAccent,width: 1)
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(child: Text("${pC.products[pC.productsQuantity[index]["INDEX"]]["NAME"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,))),
-                      Expanded(child: Obx(()=>Text("${pC.screenQuantityDisplay[pC.productsQuantity[index]["INDEX"]]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)))),
-                      Expanded(child: Text("${pC.products[pC.productsQuantity[index]["INDEX"]]["PRICE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,))),
-                      Text("${pC.products[pC.productsQuantity[index]["INDEX"]]["BARCODE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                       ],
 
-                  ),
-                              );
-                            }),
-                )
-                : Text("No Product Added",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,))),
+                  Obx(()=> pC.products.isNotEmpty ? Expanded(
+                    child: ListView.builder(itemCount: pC.productsQuantity.length,itemBuilder:(context,index){
+                      return Container(
+                        padding: EdgeInsets.all(8),
+                        margin: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.blueAccent,width: 1)
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(child: Text("${pC.products[pC.productsQuantity[index]["INDEX"]]["NAME"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,))),
+                            Expanded(child: Obx(()=>Text("${pC.screenQuantityDisplay[pC.productsQuantity[index]["INDEX"]]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)))),
+                            Expanded(child: Text("${pC.products[pC.productsQuantity[index]["INDEX"]]["PRICE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,))),
+                            Text("${pC.products[pC.productsQuantity[index]["INDEX"]]["BARCODE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
+                          ],
 
-                Divider(),
-                Container(decoration: BoxDecoration(color: Colors.blueAccent,borderRadius: BorderRadius.circular(5)),width: double.infinity,padding: EdgeInsets.all(8),margin: EdgeInsets.all(8),child: Center(child: Text("Total Bill Paid: ${pC.total}",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black,)))),
-                Divider(),
+                        ),
+                      );
+                    }),
+                  )
+                      : Center(child: Text("No Product Added",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 10)))),
 
-              ],
-            ),
-          ),
+                  Divider(color: Colors.black,),
+
+                  Container(decoration: BoxDecoration(color: Colors.blueAccent,borderRadius: BorderRadius.circular(5)),width: double.infinity,padding: EdgeInsets.all(8),margin: EdgeInsets.all(8),child: Center(child: Text("Total Bill Paid: ${pC.total}",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black,)))),
+                ])),
+      ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
