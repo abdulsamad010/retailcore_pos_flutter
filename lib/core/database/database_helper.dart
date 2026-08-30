@@ -169,6 +169,21 @@ class DatabaseHelper {
     );
   }
 
+  Future<void> updateProductDb(List<Map<String,dynamic>> productsQuantity) async {
+    await initDb();
+
+    for(int i=0;i<productsQuantity.length;i++) {
+      await db!.update(
+        "PRODUCTS",
+        {
+          "QUANTITY": productsQuantity[i]["QUANTITY"]
+        },
+        where: "ID = ?",
+        whereArgs: [productsQuantity[i]["ID"]],
+      );
+    }
+  }
+
   Future<void> deleteStockMovementDb(int id) async {
     await initDb();
 

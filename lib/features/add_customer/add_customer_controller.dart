@@ -12,6 +12,7 @@ class AddCustomerController extends GetxController{
     final cId=await obj.addCustomerDb(n,p);
     await obj.addStockMovementCustomerDb(cId,nC.total.value);
     await obj.addSalesDb(cId,nC.total.value);
+    await obj.updateProductDb(nC.productsQuantity);
   }
 
 
