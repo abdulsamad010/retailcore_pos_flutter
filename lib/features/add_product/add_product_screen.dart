@@ -184,7 +184,8 @@ class AddProductScreen extends StatelessWidget {
 
                 Center(
                   child: ElevatedButton(onPressed: ()async{
-                    if(formKey.currentState!.validate()){await aPC.addProduct(nC.text,int.tryParse(qC.text) ?? 1,int.tryParse(pC.text) ?? 1,bC.text,n2C.text,p2C.text);}
+                    if(formKey.currentState!.validate()){await aPC.addProduct(nC.text,int.tryParse(qC.text) ?? 1,int.tryParse(pC.text) ?? 1,bC.text,n2C.text,p2C.text);
+                    Navigator.pop(context);}
                   },
                       style: ElevatedButton.styleFrom(backgroundColor: Colors.greenAccent,padding: EdgeInsets.all(4))
                       ,child: Padding(
