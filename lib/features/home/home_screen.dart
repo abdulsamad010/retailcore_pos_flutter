@@ -9,6 +9,8 @@ import 'package:retailcore_pos/features/new_sales/new_sales_controller.dart';
 import 'package:retailcore_pos/features/sales_history/sales_history_controller.dart';
 
 import '../../core/widgets/custom_app_bar.dart';
+import '../Barcode/barcode_controller.dart';
+import '../Barcode/barcode_screen.dart';
 import '../daily_sales_report/daily_sales_report_controller.dart';
 import '../daily_sales_report/daily_sales_report_screen.dart';
 import '../new_sales/new_sales_screen.dart';
@@ -59,6 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Colors.blueAccent,
     Colors.amberAccent,
     Colors.deepPurple,
+    Colors.redAccent,
   ];
 
   @override
@@ -160,6 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>AddProductScreen()));
                       }
                       else if(index==8){
+                        Get.delete<BarcodeController>();
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>BarcodeScreen()));
                       }
                       },

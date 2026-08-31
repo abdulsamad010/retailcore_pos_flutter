@@ -169,6 +169,16 @@ class DatabaseHelper {
     );
   }
 
+  Future<List<Map<String,dynamic>>> findProductDb(barcode) async {
+    await initDb();
+
+    return await db!.query(
+      "PRODUCTS",
+      where: "BARCODE = ?",
+      whereArgs: [barcode],
+    );
+  }
+
   Future<void> updateProductDb(List<Map<String,dynamic>> productsQuantity) async {
     await initDb();
 
