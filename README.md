@@ -1,10 +1,6 @@
 # 🛍️ RetailCore POS Flutter
 
 <p align="center">
-  <img src="assets/logo/app_logo.png" alt="RetailCore POS Logo" width="140">
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
   <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
   <img src="https://img.shields.io/badge/GetX-8A2BE2?style=for-the-badge&logoColor=white" alt="GetX">
@@ -576,10 +572,6 @@ This project is licensed under the **MIT License**.
 See the [LICENSE](LICENSE) file for the complete license text.
 
 ---
-
-<p align="center">
-  <img src="assets/logo/app_logo.png" alt="RetailCore POS" width="65">
-</p>
 
 <p align="center">
   <b>🛍️ RetailCore POS</b>
