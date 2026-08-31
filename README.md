@@ -77,7 +77,7 @@ The current barcode functionality is specifically used for:
 - 👀 Displaying the matching product
 - 🗑️ Allowing the matching product to be deleted
 
-> **Note:** Barcode scanning is currently implemented for searching a specific product and accessing that product for deletion. It is not presented as a complete barcode-based checkout system.
+> **Note:** Barcode scanning is currently implemented for searching a specific product and accessing that product for deletion.
 
 ---
 
