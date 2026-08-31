@@ -108,7 +108,7 @@ class NewSalesScreen extends StatelessWidget {
                                 Text("Id",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
                                 VerticalDivider(),
 
-                                Text("Name",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+                                Text("          Name    ",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
                                 VerticalDivider(),
 
                                 Text("Quantity",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),

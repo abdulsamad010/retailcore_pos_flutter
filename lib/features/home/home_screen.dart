@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:retailcore_pos/features/add_product/add_product_screen.dart';
@@ -36,7 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
     "New Sale (POS)",
     "Sales History",
     "Daily Sales Reports",
-    "Add Product"];
+    "Add Product",
+  "Barcode Scanning"];
 
   final icon=[
     Icons.production_quantity_limits_sharp,
@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Icons.shopping_cart_sharp,
     Icons.newspaper,
     Icons.add,
+    Icons.barcode_reader,
   ];
 
   final iconColor=[
@@ -101,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>DailySalesReportScreen()));
                         },
                             style: ElevatedButton.styleFrom(backgroundColor: Colors.lightBlueAccent)
-                        ,child: Text("Recent Transactions",style: TextStyle(color: Colors.white),)),
+                        ,child: Text("Recent Sales Transactions",style: TextStyle(color: Colors.white),)),
 
                         Image.asset("assets/icon/icon9.png",fit: BoxFit.contain,height: MediaQuery.sizeOf(context).height*0.1,)
                       ],
@@ -158,7 +159,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       else if(index==7){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>AddProductScreen()));
                       }
-                    },
+                      else if(index==8){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>BarcodeScreen()));
+                      }
+                      },
                     child:  Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

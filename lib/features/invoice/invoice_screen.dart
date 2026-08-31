@@ -49,7 +49,7 @@ class InvoiceScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Item",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
+                        Text("       Item   ",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
                         VerticalDivider(color: Colors.black,thickness: 1,),
                         Text("Quantity",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,)),
                         VerticalDivider(color: Colors.black,thickness: 1,),

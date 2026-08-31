@@ -102,7 +102,7 @@ class CartScreen extends StatelessWidget {
                               Text("Id",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
                               VerticalDivider(),
 
-                              Text("Name",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+                              Text("        Name    ",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
                               VerticalDivider(),
 
                               Text("Quantity",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
@@ -152,8 +152,8 @@ class CartScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text("Price: ${pC.products[pC.productsQuantity[index]["INDEX"]]["PRICE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
-                              Text("Barcode: ${pC.products[pC.productsQuantity[index]["INDEX"]]["BARCODE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
+                              Text("${pC.products[pC.productsQuantity[index]["INDEX"]]["PRICE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
+                              Text("${pC.products[pC.productsQuantity[index]["INDEX"]]["BARCODE"]}",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.black,)),
                             ],
                           ),
                         ),],

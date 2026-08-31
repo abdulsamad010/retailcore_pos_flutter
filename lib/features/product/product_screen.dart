@@ -79,10 +79,10 @@ class ProductScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text("Id",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+                            Text("      Id",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
                             VerticalDivider(),
 
-                            Text("Name",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+                            Text("    Name",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
                             VerticalDivider(),
 
                             Text("Quantity",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
@@ -118,7 +118,7 @@ class ProductScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text("Price",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+                            Text("  Price",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
 
                             VerticalDivider(),
 

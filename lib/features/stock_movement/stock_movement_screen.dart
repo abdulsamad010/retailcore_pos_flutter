@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:retailcore_pos/core/widgets/custom_app_bar.dart';
-import 'package:retailcore_pos/features/product/product_controller.dart';
 import 'package:retailcore_pos/features/stock_movement/stock_movement_controller.dart';
 
 class StockMovementScreen extends StatelessWidget {
@@ -90,7 +89,7 @@ class StockMovementScreen extends StatelessWidget {
 
                               VerticalDivider(),
 
-                              Text("Type",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+                              Text("  Type",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
 
                             ],
                           ),
@@ -131,7 +130,7 @@ class StockMovementScreen extends StatelessWidget {
 
                               VerticalDivider(),
 
-                              Text("Date",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
+                              Text("Date     ",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey,),),
                             ],
                           ),
                         ),
